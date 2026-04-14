@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connected Scatterplot</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+
+    #controls {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    #dimensionControls {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    #chart {
+      margin-top: 20px;
+    }
+
+    #legend {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    #datasetInfo {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    #tooltip {
+      position: absolute;
+      visibility: hidden;
+      background: white;
+      border: 1px solid black;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      pointer-events: none;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    select,
+    input[type="range"] {
+      margin-left: 8px;
+    }
+
+    .legend-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .legend-wrapper {
+      display: inline-block;
+    }
+
+    .legend-top-labels {
+      display: grid;
+      grid-template-columns: 110px 80px 80px 80px;
+      align-items: center;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .legend-grid-row {
+      display: grid;
+      grid-template-columns: 110px 80px 80px 80px;
+      align-items: center;
+      margin-bottom: 2px;
+      font-size: 12px;
+    }
+
+    .legend-cell {
+      width: 80px;
+      height: 35px;
+      border: 1px solid #333;
+      box-sizing: border-box;
+    }
+
+    .legend-axis-note {
+      margin-top: 8px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Connected Scatterplot</h1>
+
+  <label>
+    Dataset:
+    <select id="datasetSelect">
+      <option value="driving.csv">driving.csv</option>
+      <option value="d3testset.csv">d3testset.csv</option>
+    </select>
+  </label>
+
+  <div id="datasetInfo"></div>
+
+  <div id="dimensionControls">
+    <label>
+      x-axis
+      <select id="xAxisSelect"></select>
+    </label>
+
+    <label>
+      y-axis
+      <select id="yAxisSelect"></select>
+    </label>
+
+    <label>
+      hue
+      <select id="hueSelect"></select>
+    </label>
+
+    <label>
+      lightness
+      <select id="lightnessSelect"></select>
+    </label>
+  </div>
+
+  <div id="controls">
+    <p>Select Time Range:</p>
+
+    <label>
+      Start:
+      <input type="range" id="startYear">
+      <span id="startLabel"></span>
+    </label>
+
+    <label>
+      End:
+      <input type="range" id="endYear">
+      <span id="endLabel"></span>
+    </label>
+  </div>
+
+  <div id="legend"></div>
+  <div id="chart"></div>
+  <div id="tooltip"></div>
+
+  <script src="libs/d3.v7.min.js"></script>
+  <script src="connected-scatterplot.js"></script>
+</body>
+</html>
